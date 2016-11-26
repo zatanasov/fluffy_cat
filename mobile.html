@@ -1,6 +1,18 @@
 <html>
+  <head>
+    <script type="text/javascript" src="https://github.com/stevenschobert/instafeed.js/blob/master/instafeed.min.js">
+     
+    </script>
+  </head>
 <body>
-
+var feed = new Instafeed({
+          get: 'tagged',
+          tagName: 'awesome',
+          clientId: '25e6e9faafbd4a529b55f4fbea6963d5'
+      });
+      feed.run();
 I am the mobile site
+  
+<div id="instafeed"></div>
 </body>
 </html>
