@@ -1,22 +1,35 @@
-<!DOCTYPE html>
+<html>
   <head>
-       
-	<script type="text/javascript" src='js/instafeed.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
   </head>
 <body>
-
-    <div id="Instafeed" height="200px" width="200px"> </div>
-     <script type="text/javascript" >
-	window.location = "http://junctionflufyesy.es";
-     	var feed = new Instafeed({
-          //get: 'popular',
-          //tagname: 'awesome',
-          clientId: '25e6e9faafbd4a529b55f4fbea6963d5',
-	  //resolution: 'standard_resolution', 
-	  //template: '<a class="animation" href="{{link}}"><img src="{{image}}" /></a>'
+        <script type="text/javascript">
+    	var token = '2914751491.caec67b.13e4615786054f2aa142ed3fd820e5d1',
+        
+            num_photos = 1;
+ 
+        $.ajax({
+	url: 'https://api.instagram.com/v1/users/self/media/recent',
+	dataType: 'jsonp',
+	type: 'GET',
+	data: {access_token: token, count: num_photos},
+	success: function(data){
+		console.log(data);
+		for(x in data.data){
+	$('ul').append('<div style="length:400px; width:400px;"><img src="'+data.data[x].images.standard_resolution.url+'"></div>');  
+		}
+	},
+	error: function(data){
+		console.log(data);
+	}
         });
-      feed.run();
-    </script>
-   
+	</script>
+
+	
 </body>
 </html>
+
